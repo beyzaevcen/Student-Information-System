@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header with title -->
+    <header>
+        <div class="title">
+            <h1>Student Management System ✎ᝰ </h1>
+        </div>
+    </header>
+
+
+    <main class="maindiv">
+
+        <div class="navigation">
+            <div class="open-buttons">
+                <!-- This button for list all students -->
+                <button id="openStudents" class="primaryButton">Students</button>
+                <!-- This button for all lectures -->
+                <button id="openLectures" class="primaryButton">Lectures</button>
+                <!-- This button for select course from dropdown -->
+                <select id="myDropdown">
+                    <!-- Add default option -->
+                    <option id="activeLecture" selected>Choose Lecture</option>
+                    <!-- Add options dynamically using JavaScript -->
+                </select>
+                <button id="showfailed" class="primaryButton">Show failed students</button>
+            </div>
+            <!-- Add information buttons -->
+            <div class="add-buttons">
+                <button id="OpenFormModal1" class="secondaryButton">Add Student</button>
+                <button id="OpenFormModal2" class="secondaryButton">Add Lecture</button>
+                <!-- <input type="text" id="searchInput" onkeyup="searchFilter()" class="secondaryButton"
+         placeholder="Search.."> -->
+            </div>
+        </div>
+
+        <!-- Main Table -->
+        <table id="mainTable" class="container"></table>
+
+
+        <!-- MODALS -->
+        <!-- Add student without notes and lectures information -->
+        <div class="modal" id="addNewStudentModel">
+
+            <form id="studentForm" method="post">
+                <label for="fname">First name:</label>
+                <input type="text" required id="fname" name="fname">
+                <label for="lname">Last name:</label>
+                <input type="text" required id="lname" name="lname">
+                <label for="studentId">Student Id:</label>
+                <input type="number" required id="studentId" name="studentId">
+                <label for="gpa">GPA:</label>
+                <input type="number" required id="gpa" step="0.1" name="gpa">
+
+
+                <input id="submit" class="secondaryButton p-3" type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Add lecture  -->
+        <div class="modal" id="modal-lecture">
+
+            <form id="lectureForm" method="post">
+                <label for="lectureName">Lecture Name:</label>
+                <input type="text" id="lectureName" name="lectureName">
+                <label for="teacherName">Teacher Name:</label>
+                <input type="text" id="teacherName" name="teacherName">
+                <label for="pointScale">Point Scale:</label>
+                <select name="pointScale">
+                    <option value="7">7</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="numberOfStudent">Number Of Student:</label>
+                <input type="number" id="numberOfStudent" name="numberOfStudent">
+                <label for="numberOfFailedStudent">Number Of Failed Student:</label>
+                <input type="number" id="numberOfFailedStudent" name="numberOfFailedStudent">
+
+                <input id="submit" class="secondaryButton p-3" type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Add student to lecture modal -->
+        <div id="addNewStudentToLectModal" class="modal z-index">
+
+            <div id="addStudentToLecture" class="modal-content">
+                <form id="addStudentForm" method="post">
+                    <h3>Add Student</h3>
+                    <label for="fname">First name:</label>
+                    <input type="text" required id="fname" name="fname">
+                    <label for="lname">Last name:</label>
+                    <input type="text" required id="lname" name="lname">
+                    <label for="studentId">Student Id:</label>
+                    <input type="text" required id="studentId" name="studentId">
+                    <label for="midterm">Midterm:</label>
+                    <input type="number" required max="100" min="0" id="midterm" name="midterm">
+                    <label for="final">Final:</label>
+                    <input type="number" required max="100" min="0" id="final" name="final">
+                    <input id="submit" class="secondaryButton p-3" type="submit" value="Submit">
+
+                </form>
+            </div>
+            <!-- Listing lecture's students -->
+            <div id="studentsTableForLectModal" class="modal">
+
+
+                <div class="modal-content">
+
+                    <div class="flex-row-wrapper gap-1" style="justify-content: flex-start;margin-bottom:.5rem">
+
+                    </div>
+                    <table id="lectureStudentTable">
+                    </table>
+
+                </div>
+                <div id="addNewLectureModal" class="modal">
+
+                    <!-- add new lecture modal -->
+                    <div id="edit-modal-content" class="modal-content">
+                        <form id="editLectureForm" method="post">
+                            <label for="lectureName">Lecture Name:</label>
+                            <input type="text" id="lectureName" name="lectureName">
+                            <label for="teacherName">Teacher Name:</label>
+                            <input type="text" id="teacherName" name="teacherName">
+                            <label for="pointScale">Point Scale:</label>
+                            <select name="pointScale">
+                                <option value="7">7</option>
+                                <option value="10">10</option>
+                            </select>
+                            <label for="numberOfStudent">Number Of Student:</label>
+                            <input type="number" id="numberOfStudent" name="numberOfStudent">
+                            <label for="numberOfFailedStudent">Number Of Failed Student:</label>
+                            <input type="number" id="numberOfFailedStudent" name="numberOfFailedStudent">
+
+                            <input id="submit" class="secondaryButton p-3" type="submit" value="Submit">
+                        </form>
+                    </div>
+
+                </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
